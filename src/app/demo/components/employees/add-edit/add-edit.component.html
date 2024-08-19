@@ -1,0 +1,43 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<p-toast></p-toast>
+<mat-dialog-content>
+
+  <form [formGroup]="myform" (ngSubmit)="save()" >
+    <div fxLayout="column" fxLayoutGap="10px">
+      <div fxLayout="row" fxLayoutGap="10px">
+        <input pInputText type="text" placeholder="Employee Name" formControlName="username" fxFlex />
+        <input *ngIf="this.data.employeeId <= 0" pInputText type="text" placeholder="Password" formControlName="password" fxFlex />
+      </div>
+      <div fxLayout="row" fxLayoutGap="10px">
+        <p-dropdown appendTo="body" [options]="departements" formControlName="departement" appendToBody optionLabel="title" [showClear]="true" placeholder="Departement"></p-dropdown>
+
+        <div fxLayout="column" fxLayoutGap="10px" class="newInput">
+          <input    pInputText type="text" placeholder="Email" formControlName="email" />
+          
+          <small *ngIf="myform.get('email')?.hasError('invalidEmail')" class="p-error">
+            <span pTooltip="Email must end with '&#64;majesteye.com'" tooltipPosition="bottom" style="color: rgb(220, 54, 54);">
+              Email must end with '&#64;majesteye.com'
+            </span>
+          </small>
+        </div>
+
+      </div>
+      <div fxLayout="row" fxLayoutGap="10px" *ngIf="this.data.isIntern===1">
+        <p-calendar formControlName="startDateIntegrationAsIntern"  [showIcon]="true" [style]="{width: '100%'}"  appendTo="body" placeholder="Start Date" fxFlex></p-calendar>
+          
+
+          
+        <p-calendar formControlName="endDateIntegrationAsIntern"   [showIcon]="true" [style]="{width: '100%'}"  appendTo="body" placeholder="End Date" fxFlex></p-calendar>
+          
+
+          
+       
+      </div>
+    </div>
+    <div mat-dialog-actions align="end">
+      
+      <button style=" color: #D97A07;" (click)="closePopup()" mat-raised-button>Cancel</button>
+      <button mat-raised-button type="submit" style="background-color: #D97A07; color: white;" class="button" [disabled]="!myform.valid">Save</button>
+    </div>
+  </form>
+</mat-dialog-content>

@@ -1,0 +1,34 @@
+.button {
+    background-color: #0D2E4D;
+    color: white
+   
+  }
+
+  .warn {
+    background-color: red;
+    color: white
+   
+  }
+
+  .content {
+    padding-top: 10px;
+  }
+  .row {
+    display: flex;
+    gap: 10px;
+  
+   
+    
+  }
+  
+  .action {
+    padding: 0px 25px 20px;
+    button {
+      flex: 1;
+    }
+  }
+
+  .newInput {
+    width: 537px !important;
+   
+  }

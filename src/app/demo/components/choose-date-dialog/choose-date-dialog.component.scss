@@ -1,0 +1,16 @@
+::ng-deep .ui-datepicker {
+    z-index: 2001; /* or a higher value based on your layout */
+  }
+
+
+  .mat-dialog-container {
+    z-index: 1000; /* Adjust the value as needed */
+    overflow: visible !important; /* Ensure the overflow is visible */
+  }
+
+
+.small-calendar {
+  width: 50px; /* Adjust the width as needed */
+  height: 50px; /* Adjust the height as needed */
+}
+

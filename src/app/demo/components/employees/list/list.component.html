@@ -1,0 +1,148 @@
+
+
+
+
+
+<p-toast></p-toast>
+
+<style>.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px; 
+}</style>
+<div class="col-12">
+<div class="card">
+  <div class="container">
+    <h5>TeamLeads & TeamMembers</h5>
+
+    <p-button style="margin-right: -500px;"[routerLink]="['/addMember']" routerLinkActive="router-link-active"  label="+ Add Team Member" />
+    <p-button [routerLink]="['/addlead']" routerLinkActive="router-link-active"  label="+ Add Team Lead" />  </div>
+  
+  <p-table #dt1 [value]="employees" dataKey="id" [paginator]="true" [rows]="10" [rowHover]="true" styleClass="p-datatable-gridlines"  [globalFilterFields]="['name','country.name','representative.name','status']" responsiveLayout="scroll">
+    <ng-template pTemplate="caption">
+      <div class="flex justify-content-between flex-column sm:flex-row" fxLayoutAlign="center center" style="align-items: center;">
+        
+       <div fxLayoutAlign="center center" style="align-items: center;" fxLayoutGap="10px">
+       
+    </div> 
+    <span class="p-input-icon-left mb-2">
+      <i class="pi pi-search"></i>
+      <input pInputText
+             type="text"
+             style="height: 45px;"
+             #filter
+           
+             (keyup.enter)="searchByName(filter.value)"
+             placeholder="Search"
+             class="w-full"/>
+  </span>
+  
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="min-width: 8rem">
+          <div class="flex justify-content-between align-items-center">
+           Username
+          
+          </div>
+        </th>
+  <th style="min-width: 8rem">
+          <div class="flex justify-content-between align-items-center">
+            Email 
+          
+          </div>
+        </th>
+        <th style="min-width: 8rem">
+          <div class="flex justify-content-between align-items-center">
+            Departement
+          
+          </div>
+        </th>
+     
+       
+        <th style="min-width: 10rem">
+          <div class="flex justify-content-between align-items-center">
+            Role
+           
+          </div>
+        </th>
+      
+        <th style="min-width: 10rem">
+          <div class="flex justify-content-between align-items-center">
+            CIN
+           
+          </div>
+        </th>
+        <th style="min-width: 10rem">
+          <div class="flex justify-content-between align-items-center">
+            Phone
+           
+          </div>
+        </th>
+     
+        <th style="min-width: 23rem">
+          <div class="flex justify-content-between align-items-center">
+            Actions
+         
+          </div>
+        </th> 
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body"  let-element>
+      <tr *ngIf="element.role === 'TeamLead' || element.role === 'TeamMember'">
+        <td>{{ element.username }}</td>
+        
+   
+
+    
+      
+       
+        <td>{{ element.email }}</td>
+        <td>{{ element.departement.title }}</td>
+    
+        <td>
+          <ng-container *ngIf="element.role === 'TeamMember'">
+            <span class="c-pill c-pill--warning">TeamMember</span>
+          </ng-container>
+          <ng-container *ngIf="element.role === 'TeamLead'">
+            <span class="c-pill c-pill--success">TeamLead</span>
+          </ng-container>
+        </td>
+        
+       <td>{{element.cin}}</td>
+       <td>{{element.phone}}</td>
+    
+        <td>
+          
+       
+          <button mat-icon-button (click)="editEmployee(element.id)"  matTooltip="Edit User Information">
+          <mat-icon color="primary" style="color: #0D2E4D;">edit</mat-icon>
+        </button>
+   
+ 
+     
+       
+     
+     
+        <p-toast  [life]="10000"></p-toast>
+        <button mat-icon-button color="warn" (click)="deleteEmployee(element.id,element.username)"   matTooltip="Delete Team member"> 
+          <mat-icon >delete</mat-icon>
+        </button>
+    
+      
+      </td>
+      
+      </tr>
+    </ng-template>
+    
+    </p-table>
+ <!---<div class="flex align-items-center justify-content-end">
+    
+       <p-paginator [first]="first" [rows]="rows" [totalRecords]="totalRecords" (onPageChange)="onPageChange($event)" [showCurrentPageReport]="true" 
+          currentPageReportTemplate="{first} - {last} of {totalRecords}" [showPageLinks]="false" [showFirstLastIcon]="false"></p-paginator>
+  </div>--> 
+</div>
+
+</div>

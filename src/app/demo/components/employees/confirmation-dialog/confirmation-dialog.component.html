@@ -1,0 +1,22 @@
+<h1 mat-dialog-title> Delete User </h1>
+<mat-dialog-content>
+   
+    <hr>
+    <div fxLayout="column" fxLayoutGap="5px">
+    <div style="display: flex; align-items: center;">
+        <i class="pi pi-exclamation-triangle" ></i>
+        <span style="margin-left: 5px;">To delete <b>{{username}}</b> type the username <b>{{username}}</b></span>
+    </div>
+      
+      
+            <input pInputText type="text" placeholder="Employee Name" [(ngModel)]="employeeName" fxFlex />
+          </div>
+        
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end" >
+        <p-toast  [life]="10000"></p-toast>
+        <button mat-raised-button style=" color: #D97A07;" mat-dialog-close tabindex="-1">{{cancelButtonText}}</button>
+        <button mat-raised-button style="background-color: #D97A07; color: white;" (click)="onConfirmClick()" >{{confirmButtonText}}</button>
+       
+    </mat-dialog-actions>

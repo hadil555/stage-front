@@ -1,0 +1,28 @@
+
+<div class="card p-fluid">
+    <div class="split-container">
+       
+        <div class="form-container">
+            <h5>Departement</h5>
+            <hr>
+            <br>
+            <form [formGroup]="resetPasswordForm" (ngSubmit)="changeUserPassword()">
+                <div class="field">
+                    <label for="name1">Title</label>
+                    <input formControlName="title" class="Input" id="email1" type="text" placeholder="Title" pInputText>
+                 
+                 
+                </div>
+                <div class="field">
+                    <label for="email1">Description</label>
+                    <input formControlName="description" class="Input" id="email1" type="text" placeholder="Description" pInputText>
+                 
+
+                          
+                </div>
+               
+                <!-- Add the Reset Password button -->
+                <div class="field">
+                    <button pButton type="submit" label="Save"></button>
+     
+                    <p-toast></p-toast>

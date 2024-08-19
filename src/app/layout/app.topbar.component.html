@@ -1,0 +1,31 @@
+<div class="layout-topbar">
+    <a class="layout-topbar-logo" routerLink="">
+        <img src="assets/bb.png.png" alt="logo" > <span style="font-family: Venera900;">
+            <span style="color: #0D2E4D; font-size: 1.5em">Proj</span><span style="color: #0D2E4D; font-size: 1.5em">Manege</span>
+          </span>
+        <!---<span>SAKAI</span>-->
+    </a>
+
+    <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
+        <i class="pi pi-bars"></i>
+    </button>
+
+    <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="layoutService.showProfileSidebar()">
+        <i class="pi pi-ellipsis-v"></i>
+    </button>
+
+    <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}" style="margin-right: 80px;">
+       
+        <button class="p-link layout-topbar-button"  [routerLink]="'/changeUserPassword'" style="margin-right: 5px;">
+            <i class="pi pi-cog"></i>
+            <span>Settings</span>
+        </button>
+       <div  fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center" style="align-items: center;">
+       
+            <i class="pi pi-user"></i>
+            <span>Profile</span>&nbsp; Hi, {{username}}
+   
+        </div>
+    </div>
+    
+</div>

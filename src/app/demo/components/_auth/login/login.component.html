@@ -1,0 +1,163 @@
+<p-toast></p-toast>
+<div style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);" class="mat-elevation-z8 flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden">
+    <div class="flex flex-column align-items-center justify-content-center">
+      <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center" style="align-items: center;">
+        <img src="assets/bb.png" alt="majesteye-h" height="90px" width="auto" draggable="false">
+        <span style="font-family: Venera900;">
+          <span style="color: #D97A07; font-size: 1.5em">Doct</span><span style="color: #0D2E4D; font-size: 1.5em">Lib</span>
+        </span>
+      </div>
+      <br>
+      <div style="border-radius:56px; padding:0.3rem; background: linear-gradient(180deg, #D97A07 10%, rgba(33, 150, 243, 0) 30%);">
+        <div class="w-full surface-card py-8 px-5 sm:px-8" style="border-radius:53px">
+          <div class="text-center mb-5">
+            <h2 class="fs-4 card-title fw-bold mb-4" style="font-family: Venera700; color: #0D2E4D;">Sign In</h2>
+            <hr>
+          
+          </div>
+          <div>
+            <form [formGroup]="form" class="form" *ngIf="!isLoggedIn" (ngSubmit)="onSubmit()">
+              <div fxLayout="column" fxLayoutGap="10px">
+                <label class="mb-2 w-100 text-xl" for="username" style="color: #0D2E4D;">Username</label>
+                <span class="p-input-icon-right">
+                  <i class="pi pi-user"></i>
+                  <input formControlName="username" class="Input" id="email1" type="text" placeholder="Username" pInputText>
+                 
+
+                  
+                </span>
+                <div *ngIf="form.get('username').touched && form.get('username').hasError('required')" class="invalid-feedback">
+                  <small id="username-help" style="font-size: 12px; color: red">  * Username cannot be empty.</small>
+                  </div>
+                <!-- <div *ngIf="form.get('username').touched && form.get('username').hasError('noWhitespace')" class="invalid-feedback">
+                  
+                    <small id="username-help" style="font-size: 12px; color: red">  * Username cannot contain white spaces.</small>
+                  </div>---> 
+            
+                  <label style=" font-family: 'Poppins', sans-serif;" class="mb-2 w-100 text-xl" for="username" style="color: #0D2E4D;">Password</label>
+               
+                <p-password [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}" placeholder="Password"
+                  [toggleMask]="true" formControlName="password" [feedback]="false"></p-password>
+                  <div *ngIf="form.get('password').touched && form.get('password').hasError('required')" class="invalid-feedback">
+                    <small id="username-help" style="font-size: 12px; color: red">  * Password cannot be empty.</small>
+                    </div>
+                <div>
+                  <br>
+                  <button pButton type="submit" name="submit" value="Sign In" pRipplea label="LOGIN"
+                    style="background-color: #D97A07; color: white; border: none; font-family: Venera700;"
+                    class="mb-4 w-full mb-2">
+                   <!--- <i class="fa-solid fa-arrow-right-to-bracket"></i>-->
+                  </button>
+                  <br>
+
+                  <div class="text-center mb-5">
+                    <span><a style="text-decoration: underline;font-family: Venera700;  color: #D97A07;" (click)="redirect()">Forgot password?</a></span>
+                  </div>
+                  <div class="text-center mb-5">
+                    <span><a style="text-decoration: underline;font-family: Venera700;  color: #D97A07;" (click)="signup()">Signup</a></span>
+                  </div>
+                  <br> <br> <a class="font-medium no-underline ml-2 text-right cursor-pointer"></a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+<!-----
+ 
+<div  class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen  overflow-hidden">
+    
+
+    
+    <div class="flex flex-column align-items-center justify-content-center">
+        <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center" style="align-items: center;">
+            
+    
+        <img src="assets/bb.png" alt="majesteye-h" height="70px" width="auto"
+          draggable="false">
+          <span style="font-family: Venera900;">
+            <span style="color: #0D2E4D;font-size: 1.2em">Emp</span><span style="color: #D97A07;font-size: 1.2em">Tracking</span>
+        </span>
+        </div>
+<br>
+        <div style="border-radius:56px; padding:0.3rem; background: linear-gradient(180deg, #D97A07 10%, rgba(33, 150, 243, 0) 30%);">
+            <div class="w-full surface-card py-8 px-5 sm:px-8" style="border-radius:53px">
+                <div class="text-center mb-5">
+                    <h2 class="fs-4 card-title fw-bold mb-4" style="font-family: Venera700; color: #0D2E4D;">Sign In</h2>
+                    
+                   
+                </div>
+
+                <div>
+                    <form name="form" class="form"  *ngIf="!isLoggedIn"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate> 
+        <div fxLayout="column" fxLayoutGap="10px">
+            <span class="p-input-icon-right">
+                <i class="pi pi-user"></i>
+                <input class="Input" id="email1" type="text" [(ngModel)]="form.username" required 
+                    #username="ngModel" [ngModelOptions]="{standalone: true}"
+                    [ngClass]="{ 'is-invalid': f.submitted && username.errors }"  placeholder="Username" pInputText>
+                <br>
+                <div *ngIf="f.form.invalid" class="invalid-feedback">
+                   
+                   Username is required.
+                   
+                </div>
+            </span>
+       
+                    <p-password [style]="{'width':'100%'}"
+                    [inputStyle]="{'width':'100%'}" placeholder="Password" [toggleMask]="true" [(ngModel)]="form.password" [ngModelOptions]="{standalone: true}" [feedback]="false"></p-password>
+                    <div>
+             <button pButton type="submit" name="submit" value="Sign In" pRipplea label="LOGIN" style="background-color: #D97A07; color: white; border: none; font-family: Venera700;" class="mb-4 w-full mb-2">
+                <i class="fa-solid fa-arrow-right-to-bracket" ></i>
+    
+</button>
+                     <div class="text-center mb-5">
+                        <span > <a style="text-decoration: underline;"
+                            routerLink="/auth/register">Forgot password?</a></span>
+                      </div>
+                   <br>  <br> <a class="font-medium no-underline ml-2 text-right cursor-pointer"></a>    
+                </div>
+            </div>
+
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+--->
+  <!--  <input   type="text"  [(ngModel)]="form.password" required 
+                #username="ngModel" [ngModelOptions]="{standalone: true}"
+                [ngClass]="{ 'is-invalid': f.submitted && username.errors }"  placeholder="Password " pInputText class="mb-4 w-full mb-2" >
+               
+              Add the "eye" icon button for toggling password visibility
+                <span class="p-input-icon-left">
+                    <input
+                        type="{{ passwordVisible ? 'text' : 'password' }}"
+                        [(ngModel)]="form.password"
+                        required
+                        #password="ngModel"
+                        [ngModelOptions]="{ standalone: true }"
+                        [ngClass]="{ 'is-invalid': f.submitted && password.errors }"
+                        placeholder="Password"
+                        pInputText
+                        class="mb-4 w-full mb-2"
+                    />
+                   
+                    <button
+                        type="button"
+                        (click)="togglePasswordVisibility()"
+                        style="background-color: transparent; border: none; cursor: pointer; position: absolute; right: 1rem; top: 1.5rem;"
+                    >
+                        <i [class]="passwordVisible ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+                    </button>
+           
+                </span>--->

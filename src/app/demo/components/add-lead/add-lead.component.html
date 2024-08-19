@@ -1,0 +1,73 @@
+
+<div class="card p-fluid">
+    <div class="split-container">
+       
+        <div class="form-container">
+            <h5>{{titleForm}} </h5>
+            <hr>
+            <br>
+            <form [formGroup]="resetPasswordForm" (ngSubmit)="save()">
+                <div class="field">
+                    <label for="name1">Name</label>
+                    <input formControlName="username" class="Input" id="email1" type="text" placeholder="Name" pInputText>
+                 
+                 
+                </div>
+                <div class="field">
+                    <label for="email1">Email</label>
+                    <input formControlName="email" class="Input" id="email1" type="text" placeholder="Email" pInputText>
+                 
+
+                          
+                </div>
+                <div class="field">
+                    <label for="email1">Password</label>
+                    <input formControlName="password" class="Input" id="email1" type="text" placeholder="Password" pInputText>
+                 
+
+                          
+                </div>
+                <div class="field">
+                    <label for="email1">CIN</label>
+                    <input formControlName="cin" class="Input" id="email1" type="text" placeholder="CIN" pInputText>
+                 
+
+                          
+                </div>
+                <div class="field">
+                    <label for="email1">Phone Number</label>
+                    <input formControlName="phone" class="Input" id="email1" type="text" placeholder="Phone Number" pInputText>
+                 
+
+                          
+                </div>
+
+                
+               
+           <!-----    <p-dropdown 
+                [options]="roles" 
+                formControlName="selectedrole" 
+                optionLabel="name"
+                placeholder="Select a role" />--->
+
+                <div formGroupName="departement">
+                    <label for="departement">Departements</label>
+                    <p-dropdown [options]="services" formControlName="id" placeholder="Select a Departement" optionLabel="title" optionValue="id"></p-dropdown>
+                  </div>
+             <!-----
+               <label for="email1">Service</label>
+                    <p-dropdown 
+                      [options]="services" 
+                      formControlName="departement.id"
+                      optionLabel="title"
+                      placeholder="Select a Service">
+                    </p-dropdown>
+                  </div>-->
+                  
+               
+                <!-- Add the Reset Password button -->
+                <br>
+                <div class="field">
+                    <button pButton type="submit" label="Save"></button>
+     
+                    <p-toast></p-toast>

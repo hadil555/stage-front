@@ -1,0 +1,72 @@
+<h1 mat-dialog-title>Log</h1>
+<mat-dialog-content >
+  <hr>
+  <!-----
+  <div style="display: flex; align-items: center;">
+    <i class="pi pi-exclamation-triangle" ></i>
+    <span style="margin-left: 5px;">To  </span>
+  </div>--->
+  <br>
+<table mat-table [dataSource]="historique" >
+
+  <ng-container matColumnDef="timeUpadting">
+    <th mat-header-cell *matHeaderCellDef> Date Time Updating. </th>
+    <td mat-cell *matCellDef="let element">  {{element.timeUpadting}} </td>
+  </ng-container>
+  <ng-container matColumnDef="updatedBy">
+    <th mat-header-cell *matHeaderCellDef> Checked By </th>
+    <td mat-cell *matCellDef="let element"> {{element.checkedBy}} </td>
+  </ng-container>
+
+    <ng-container matColumnDef="Date">
+        <th mat-header-cell *matHeaderCellDef> Date. </th>
+        <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+      </ng-container>
+
+  
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="CheckIn">
+        <th mat-header-cell *matHeaderCellDef> Check In Time</th>
+        <td mat-cell *matCellDef="let element"> {{element.checkInTime | timeFormatWithoutSecond}} </td>
+      </ng-container>
+    
+      <!-- Weight Column -->
+      <ng-container matColumnDef="CheckOut">
+        <th mat-header-cell *matHeaderCellDef> Check Out Time</th>
+        <td mat-cell *matCellDef="let element"> {{element.checkOutTime | timeFormatWithoutSecond}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="hourType">
+        <th mat-header-cell *matHeaderCellDef>Hour Type</th>
+        <td mat-cell *matCellDef="let element">
+          <ng-container *ngIf="element.extraHour=== '0'; else extraHourBlock">
+            <span class="c-pill c-pill--success">Normal Hour</span>  
+          </ng-container>
+          <ng-template #extraHourBlock>
+            <span class="c-pill c-pill--danger">Extra Hour</span> 
+          </ng-template>
+        </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="TotalHours">
+        <th mat-header-cell *matHeaderCellDef> Total Hours Worked </th>
+        <td mat-cell *matCellDef="let element"> {{element.duration | formatTime}}  Hours</td>
+      </ng-container>
+    
+
+
+  
+  
+  
+  
+ 
+
+     
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="blue-row"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+</mat-dialog-content>
+

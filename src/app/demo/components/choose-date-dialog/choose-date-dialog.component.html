@@ -1,0 +1,32 @@
+
+
+<h1 mat-dialog-title>Attendance Time</h1>
+  
+    <div mat-dialog-content fxLayout="column" fxLayoutGap="10px">
+  <hr>
+ 
+        
+     
+        <p-toast></p-toast>
+        
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px"   class="calendar-container">
+            
+      
+          
+           
+            <p-calendar [(ngModel)]="data.startDate2"  [showIcon]="true" [showIcon]="true" [style]="{width: '100%'}"  appendTo="body" placeholder="Start Date" fxFlex></p-calendar>
+          
+
+          
+                 <p-calendar [(ngModel)]="data.endDate2"  [showIcon]="true" [showIcon]="true" [style]="{width: '100%'}"  appendTo="body" placeholder="End Date" fxFlex></p-calendar>
+        
+  
+         
+</div>
+  
+    <div mat-dialog-actions fxLayout="row" fxLayoutAlign="end">
+        <button mat-button  style=" color: #D97A07;" (click)="onNoClick()">Cancel</button>
+        <button mat-button [mat-dialog-close]="data" style="background-color: #D97A07; color: white;" cdkFocusInitial>Ok</button>
+    </div>
+  
+

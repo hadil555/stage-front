@@ -1,0 +1,113 @@
+
+
+
+
+
+<style>.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px; 
+}</style>
+<div class="col-12">
+<div class="card">
+  <div class="container">
+    <h5>Departements</h5>
+      
+    <p-button [routerLink]="['/adddept']" routerLinkActive="router-link-active"  label="+ Add" />
+ </div>
+  
+  <p-table #dt1 [value]="depts" dataKey="id" [paginator]="false" [rows]="10" [rowHover]="true" styleClass="p-datatable-gridlines"   responsiveLayout="scroll">
+    <ng-template pTemplate="caption">
+      <div class="flex justify-content-between flex-column sm:flex-row" fxLayoutAlign="center center" style="align-items: center;">
+        
+       <div fxLayoutAlign="center center" style="align-items: center;" fxLayoutGap="10px">
+
+    </div> 
+    <!-----
+    <span class="p-input-icon-left mb-2">
+      <i class="pi pi-search"></i>
+      <input pInputText
+             type="text"
+             style="height: 45px;"
+             #filter
+           
+             (keyup.enter)="searchByName(filter.value)"
+             placeholder="Search"
+             class="w-full"/>
+  </span>-->
+  
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="min-width: 8rem">
+          <div class="flex justify-content-between align-items-center">
+           Title
+          
+          </div>
+        </th>
+  <th style="min-width: 8rem">
+          <div class="flex justify-content-between align-items-center">
+            Description 
+          
+          </div>
+        </th>
+      
+     
+       
+        
+     
+     
+        <th style="min-width: 23rem">
+          <div class="flex justify-content-between align-items-center">
+            Actions
+         
+          </div>
+        </th> 
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body"  let-element>
+      <tr>
+        <td>{{ element.title }}</td>
+        
+        <td>{{ element.description }}</td>
+        
+   
+
+    
+      
+     
+    
+       
+        
+    
+        <td>
+          
+       
+          <button mat-icon-button (click)="editEmployee(element.id)"  matTooltip="Edit Employee Information">
+          <mat-icon color="primary" style="color: #0D2E4D;">edit</mat-icon>
+        </button>
+   
+ 
+     
+       
+     
+     
+
+     
+      <!---- <button mat-icon-button color="warn" (click)="confirmDelete(element.id,element.title)"   matTooltip="Delete Team member"> 
+          <mat-icon >delete</mat-icon>
+        </button>-->
+       
+       <button  mat-icon-button (click)="openDialog('0ms', '0ms',element.id)">    <mat-icon color="primary" style="color: #dd1111;">delete</mat-icon></button>
+      </td>
+      
+      </tr>
+    </ng-template>
+    
+    </p-table>
+  
+</div>
+
+</div>
